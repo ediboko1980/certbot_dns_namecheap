@@ -1,0 +1,35 @@
+*.pyc
+*.egg-info/
+.eggs/
+build/
+dist*/
+/venv*/
+/kgs/
+/.tox/
+
+# coverage
+.coverage
+/htmlcov/
+
+/.vagrant
+
+tags
+
+# editor temporary files
+*~
+*.sw?
+\#*#
+.idea
+.ropeproject
+
+# auth --cert-path --chain-path
+/*.pem
+
+.venv
+
+# pytest cache
+.cache
+.mypy_cache/
+
+# docker files
+.docker
