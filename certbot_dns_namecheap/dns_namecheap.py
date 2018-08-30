@@ -65,6 +65,11 @@ class Authenticator(dns_common.DNSAuthenticator):
         )
 
 
+class ncProvider(namecheap.Provider):
+    def authenticate(self):
+        self.domain = self.options['domain']
+        super(ncProvider, self).authenticate()
+
 class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
     """
     Encapsulates all communication with the Namecheap API via Lexicon.
@@ -74,7 +79,7 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
         super(_NamecheapLexiconClient, self).__init__()
         my_ip = urlopen('http://ip.42.pl/raw').read()
         logger.debug(my_ip)
-        self.provider = namecheap.Provider({
+        self.provider = ncProvider({
             'auth_username': username,
             'auth_token': api_key,
             'ttl': ttl,
